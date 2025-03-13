@@ -1,3 +1,3 @@
 # kotlin-selenium
 
-Repository of "Kotlin's modern take on Selenium test automation" webinar
+Repository of the webinar 'Kotlin’s Modern Take on Selenium Test Automation'.

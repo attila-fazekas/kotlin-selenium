@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StaleElementReferenceException thrown when button clicked</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="buttonContainer">
+    <button id="myButton" disabled>Click me!</button>
+    <p id="message" class="hidden">Button clicked!</p>
+</div>
+
+<script>
+    // Function to enable the button after 1 second
+    function enableButton() {
+        // Remove the existing wrapper
+        const existingWrapper = document.getElementById("buttonContainer");
+        const parent = existingWrapper.parentNode;
+        parent.removeChild(existingWrapper);
+
+        // Create a new wrapper with the same ID
+        const newWrapper = document.createElement("div");
+        newWrapper.id = "buttonContainer"; // Reuse the same ID
+
+        // Create a new button with the same ID
+        const newButton = document.createElement("button");
+        newButton.id = "myButton"; // Reuse the same ID
+        newButton.textContent = "Click me!";
+
+        // Add click event listener to the new button
+        newButton.addEventListener('click', function() {
+            const message = document.getElementById("message");
+            message.classList.remove("hidden");
+        });
+
+        // Create the message paragraph
+        const messageP = document.createElement("p");
+        messageP.id = "message";
+        messageP.textContent = "Button clicked!";
+        messageP.classList.add("hidden");
+
+        // Append the new elements to the new wrapper
+        newWrapper.appendChild(newButton);
+        newWrapper.appendChild(messageP);
+
+        // Append the new wrapper to the same parent
+        parent.appendChild(newWrapper);
+    }
+
+    // Set a timeout to call the enableButton function after 1 second
+    setTimeout(enableButton, 1000);
+</script>
+
+</body>
+</html>

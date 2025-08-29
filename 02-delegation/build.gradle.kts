@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.kolibrium:kolibrium-selenium:0.7.0-SNAPSHOT")
+    implementation("dev.kolibrium:kolibrium-selenium:0.6.0")
     implementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
     implementation("org.seleniumhq.selenium:selenium-java:4.27.0")
     testImplementation("com.titusfortner:selenium-logger:2.4.0")
